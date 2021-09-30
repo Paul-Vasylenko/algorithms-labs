@@ -140,6 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="laba1.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="SearchTree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="SearchTree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
