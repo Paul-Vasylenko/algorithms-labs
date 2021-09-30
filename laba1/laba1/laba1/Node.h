@@ -1,5 +1,7 @@
 #pragma once
 #include <cstddef>
+#include <iostream>
+
 using namespace std;
 
 class Node
@@ -16,5 +18,6 @@ public:
 	bool checkStateForWin();
 	bool checkRow(int);
 	bool checkCol(int);
+	bool checkDiagonals(int, int);
 };
 

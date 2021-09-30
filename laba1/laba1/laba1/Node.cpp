@@ -40,7 +40,7 @@ bool Node::checkStateForWin()
 		{
 			if (state[i][j] == 1) {
 				if (!this->checkRow(i)) return false;
-				if (!this->checkCol(j)) return false;
+				if (!this->checkDiagonals(i, j)) return false;
 			}
 		}
 	}
@@ -64,6 +64,25 @@ bool Node::checkCol(int col)
 	{
 		if (state[i][col] == 1) counter++;
 	}
+	return counter == 1;
+}
+
+bool Node::checkDiagonals(int row, int col)
+{
+	cout << "Check[" << row << " ," << col << "] => ";
+	int counter = 0;
+	for (int i = row, j = col; i < 8 && j < 8; ++i, ++j)
+	{
+		if (state[i][j] == 1)counter++;
+	}
+
+
+	for (int i = row+1, j=col-1;j>=0 && i<8;i++, j--)
+	{
+		if (state[i][j] == 1)counter++;
+	}
+
+	cout << counter<<endl;
 	return counter == 1;
 }
 

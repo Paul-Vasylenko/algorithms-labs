@@ -22,12 +22,13 @@ int main()
 	}
 	initialState = generateState(initialState);
 	Node* root = new Node(nullptr, initialState);
+	cout << endl << "===============" << endl << "INITIAL STATE"<<endl << "===============" << endl;
 	displayBoard(root->state);
-	cout << endl<<"CHECK FOR EVERY ROW!"<<root->checkStateForWin();
+	//cout << endl << "===============" << endl << "RESULT" << endl << "===============" << endl;
 	SearchTree tree(root);
 	if (method == "1") {
 		const int depthLimit = 20;
-
+		SearchTree::LDFS(tree, depthLimit);
 	}
 	else if (method == "2") {
 	}
@@ -39,21 +40,16 @@ int main()
 
 int** generateState(int** result) {
 	const int size = 8;
-
-	bool rowhasQueen = false;
 	for (int i = 0; i < size; i++)
 	{
-		rowhasQueen = false;
+		int queen = rand() % 8;
+
 		for (int j = 0; j < size; j++) {
-			int queen = rand() % 2;
-			if (rowhasQueen) {
-				result[i][j] = 0;
+			if (j == queen) {
+				result[i][j] = 1;
 			}
 			else {
-			result[i][j] = queen;
-			}
-			if (queen == 1) {
-				rowhasQueen = true;
+				result[i][j] = 0;
 			}
 		}
 	}
@@ -67,7 +63,7 @@ void displayBoard(int** board) {
 	{
 		for (int j = 0; j < size; j++)
 		{
-			cout << board[i][j] << '\t';
+			cout << board[i][j] << ' ';
 		}
 		cout << endl;
 	}
