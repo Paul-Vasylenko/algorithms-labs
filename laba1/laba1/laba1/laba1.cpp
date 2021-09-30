@@ -5,7 +5,6 @@
 using namespace std;
 
 int** generateState(int**);
-void displayBoard(int**);
 
 int main()
 {
@@ -23,12 +22,18 @@ int main()
 	initialState = generateState(initialState);
 	Node* root = new Node(nullptr, initialState);
 	cout << endl << "===============" << endl << "INITIAL STATE"<<endl << "===============" << endl;
-	displayBoard(root->state);
-	//cout << endl << "===============" << endl << "RESULT" << endl << "===============" << endl;
-	SearchTree tree(root);
+	SearchTree::displayBoard(root->state);
+	SearchTree tree(root, 0);
 	if (method == "1") {
-		const int depthLimit = 20;
-		SearchTree::LDFS(tree, depthLimit);
+		const int depthLimit = 5;
+		int** result = new int* [8];
+		for (int i = 0; i < 8; i++) {
+			result[i] = new int[8];
+		}
+		result = SearchTree::LDFS(tree, depthLimit);
+		cout << endl << "===============" << endl << "RESULT" << endl << "===============" << endl;
+		SearchTree::displayBoard(result);
+
 	}
 	else if (method == "2") {
 	}
@@ -53,18 +58,6 @@ int** generateState(int** result) {
 			}
 		}
 	}
-
 	return result;
 }
 
-void displayBoard(int** board) {
-	const int size = 8;
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = 0; j < size; j++)
-		{
-			cout << board[i][j] << ' ';
-		}
-		cout << endl;
-	}
-}

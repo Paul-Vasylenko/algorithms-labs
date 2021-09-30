@@ -4,11 +4,13 @@ class SearchTree
 {
 public:
 	Node* root;
-	
-	SearchTree(Node*);
+	int depth;
+	SearchTree(Node*, int);
 
-	void Insert(Node* insertIntoNode, int data[8][8]);
+	void Insert(Node* insertIntoNode);
 
-	void static LDFS(SearchTree tree, int depthLimit);
+	static int** LDFS(SearchTree tree, int depthLimit);
+	static void displayBoard(int** board);
+
 };
 
