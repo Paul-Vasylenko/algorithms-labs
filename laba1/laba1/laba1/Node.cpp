@@ -44,6 +44,23 @@ bool Node::checkStateForWin()
 	return true;
 }
 
+int Node::countPairsOfBittenQueens()
+{
+	const int length = 8;
+	int counter = 0;
+	for (int i = 0; i < length; i++)
+	{
+		for (int j = 0; j < length; j++)
+		{
+			if (state[i][j] == 1) {
+				counter += this->countConflictsInColumnAfterRow(i, j);
+				counter += this->countConflictsInDiagonals(i, j);
+			}
+		}
+	}
+	return counter;
+}
+
 bool Node::checkRow(int row)
 {
 	int counter = 0;
@@ -78,6 +95,36 @@ bool Node::checkDiagonals(int row, int col)
 	}
 
 	return counter == 1;
+}
+
+int Node::countConflictsInDiagonals(int row, int col)
+{
+	int counter = 0;
+	for (int i = row, j = col; i < 8 && j < 8; ++i, ++j)
+	{
+		if (state[i][j] == 1)counter++;
+	}
+
+	for (int i = row + 1, j = col - 1; j >= 0 && i < 8; i++, j--)
+	{
+		if (state[i][j] == 1)counter++;
+	}
+
+	return counter;
+}
+
+int Node::countConflictsInColumnAfterRow(int row, int col)
+{
+	int counter = 0;
+	const int length = 8;
+	row++;
+	for (int i = row; i < length; i++)
+	{
+		if (state[i][col] == 1) {
+			counter++;
+		}
+	}
+	return counter;
 }
 
 Node* Node::createNewState(int row, int col)

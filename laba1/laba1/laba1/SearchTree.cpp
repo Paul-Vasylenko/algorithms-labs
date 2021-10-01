@@ -43,9 +43,52 @@ int** SearchTree::LDFS(SearchTree tree, int depthLimit)
 	}
 }
 
+
+class Compare
+{
+public:
+	bool operator() (Node* a, Node* b)
+	{
+		return a->countPairsOfBittenQueens()+a->depth*3 > b->countPairsOfBittenQueens()+b->depth*3;
+	}
+};
+
+void printQueue(priority_queue<Node*, vector<Node*>, Compare> q) {
+	while (!q.empty()) {
+		cout << '\n';
+		SearchTree::displayBoard(q.top()->state);
+		q.pop();
+	}
+}
+
+int** SearchTree::ASTAR(SearchTree tree)
+{
+	priority_queue<Node*, vector<Node*>, Compare> open;
+	open.push(tree.root);
+	while (!open.empty()) {
+		Node* current = open.top();
+		open.pop();
+		if (current->checkStateForWin()) {
+			return current->state;
+		}
+		vector<Node*> childrens = current->generateChildrenNodes(current->depth+1);
+		current->children = childrens;
+		for (int i = 0; i < childrens.size(); i++)
+		{
+			childrens[i]->depth = current->depth+1;
+			open.push(childrens[i]);
+		}
+	}
+	return nullptr;
+}
+
 void SearchTree::displayBoard(int** board)
 {
 	const int size = 8;
+	if (board == nullptr) {
+		cout << "not found";
+		return;
+	}
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)

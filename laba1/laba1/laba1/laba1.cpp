@@ -25,7 +25,7 @@ int main()
 	SearchTree::displayBoard(root->state);
 	SearchTree tree(root, 0);
 	if (method == "1") {
-		const int depthLimit = 5;
+		const int depthLimit = 7;
 		int** result = new int* [8];
 		for (int i = 0; i < 8; i++) {
 			result[i] = new int[8];
@@ -36,6 +36,13 @@ int main()
 
 	}
 	else if (method == "2") {
+		int** result = new int* [8];
+		for (int i = 0; i < 8; i++) {
+			result[i] = new int[8];
+		}
+		result = SearchTree::ASTAR(tree);
+		cout << endl << "===============" << endl << "RESULT" << endl << "===============" << endl;
+		SearchTree::displayBoard(result);
 	}
 	else {
 		cout << "ERROR" << endl;
