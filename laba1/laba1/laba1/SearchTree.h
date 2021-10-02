@@ -10,7 +10,7 @@ public:
 
 	void Insert(Node* insertIntoNode);
 
-	static int** LDFS(SearchTree tree, int depthLimit);
+	static int** LDFS(SearchTree tree, int depthLimitm, int* ldfsStateConuter);
 	static int** ASTAR(SearchTree tree);
 
 	static void displayBoard(int** board);

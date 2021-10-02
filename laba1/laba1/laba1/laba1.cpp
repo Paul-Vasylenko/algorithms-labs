@@ -25,12 +25,14 @@ int main()
 	SearchTree::displayBoard(root->state);
 	SearchTree tree(root, 0);
 	if (method == "1") {
-		const int depthLimit = 7;
+		const int depthLimit = 5;
 		int** result = new int* [8];
 		for (int i = 0; i < 8; i++) {
 			result[i] = new int[8];
 		}
-		result = SearchTree::LDFS(tree, depthLimit);
+		int ldfsStateConuter = 1;
+		result = SearchTree::LDFS(tree, depthLimit, &ldfsStateConuter);
+		cout << endl <<"Total states: " << ldfsStateConuter << endl;
 		cout << endl << "===============" << endl << "RESULT" << endl << "===============" << endl;
 		SearchTree::displayBoard(result);
 
