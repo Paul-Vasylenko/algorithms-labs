@@ -109,7 +109,7 @@ int** SearchTree::ASTAR(SearchTree tree)
 			open.push(childrens[i]);
 		}
 		closed.push_back(current);
-	}
+	} 
 	cout << endl << "Iterations: " << iterationCounter;
 	cout << endl << "deadBlockCounter: " << deadBlockCounter;
 	cout << endl << "Total visited: " << closed.size()+1;
