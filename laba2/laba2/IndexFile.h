@@ -24,8 +24,7 @@ public:
 class IndexFile
 {
 	static const unsigned int MAX_KEY_VALUE = INT_MAX;
-	static const unsigned int MAX_BLOCK_SIZE = 1500;
-	static const unsigned int NUMBER_OF_BLOCKS = 4;
+	static const unsigned int NUMBER_OF_BLOCKS = 4;//index file contains 4 blocks
 public:
 	vector<IndexBlock*> blocks;
 	IndexBlock* overflowArea;
