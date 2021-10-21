@@ -1,4 +1,3 @@
-﻿  FileWorker.cpp
-  laba2.cpp
-  Создание кода...
+﻿  IndexFile.cpp
+X:\KPI\First_semestr\АСД\laba2\laba2\IndexFile.cpp(24,20): warning C4018: <: несоответствие типов со знаком и без знака
   laba2.vcxproj -> X:\KPI\First_semestr\АСД\laba2\laba2\Debug\laba2.exe

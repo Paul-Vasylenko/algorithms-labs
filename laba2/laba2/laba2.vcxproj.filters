@@ -15,21 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="laba2.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="FileWorker.cpp">
+    <ClCompile Include="DenseIndexFile.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Data.cpp">
+    <ClCompile Include="IndexFile.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSegmentFile.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileWorker.h">
+    <ClInclude Include="DenseIndexFile.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Data.h">
+    <ClInclude Include="IndexFile.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSegmentFile.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
