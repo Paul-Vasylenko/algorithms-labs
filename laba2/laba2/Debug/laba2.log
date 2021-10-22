@@ -1,7 +1,5 @@
-﻿  DataSegmentFile.cpp
-X:\KPI\First_semestr\АСД\laba2\laba2\DataSegmentFile.cpp(25,20): warning C4018: <: несоответствие типов со знаком и без знака
-  DenseIndexFile.cpp
-  IndexFile.cpp
-  main.cpp
-  Создание кода...
+﻿  IndexFile.cpp
+X:\KPI\First_semestr\АСД\laba2\laba2\IndexFile.cpp(82,21): warning C4018: <: несоответствие типов со знаком и без знака
+X:\KPI\First_semestr\АСД\laba2\laba2\IndexFile.cpp(88,20): warning C4018: <: несоответствие типов со знаком и без знака
+X:\KPI\First_semestr\АСД\laba2\laba2\IndexFile.cpp(52): warning C4715: IndexFile::search: значение возвращается не при всех путях выполнения
   laba2.vcxproj -> X:\KPI\First_semestr\АСД\laba2\laba2\Debug\laba2.exe

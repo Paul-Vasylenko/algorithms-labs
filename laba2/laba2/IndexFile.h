@@ -10,6 +10,14 @@ struct IndexRecord {
 	int dataPointer;
 
 	void parseLine(string line);
+	IndexRecord() {
+		keyValue = 0;
+		dataPointer = 0;
+	}
+	IndexRecord(int key, int data) {
+		keyValue = key;
+		dataPointer = data;
+	}
 };
 
 class IndexBlock {
@@ -19,12 +27,19 @@ public:
 	
 	IndexBlock(int,int);
 	void pushNewRecord(IndexRecord*);
+
+	IndexRecord* get(int);
+	IndexRecord* binarySearch(int,int,int);
+	bool add(int, int);
+	void deleteByKey(int);
+
 };
 
 class IndexFile
 {
 	static const unsigned int MAX_KEY_VALUE = INT_MAX;
 	static const unsigned int NUMBER_OF_BLOCKS = 4;//index file contains 4 blocks
+	static const unsigned int MAX_BLOCK_SIZE = 1500;
 public:
 	vector<IndexBlock*> blocks;
 	IndexBlock* overflowArea;
@@ -44,5 +59,10 @@ public:
 		this->readFile();
 	}
 	void readFile();
+
+	IndexRecord* search(int);
+	void insert(int, int);
+	void writeFile();
+	void deleteByKey(int);
 };
 

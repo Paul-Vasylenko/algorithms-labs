@@ -14,5 +14,9 @@ public:
 		dataSegment = new DataSegmentFile();
 	}
 
+	bool insert(int, string);
+	string getData(int);
+	void deleteByKey(int);
+	string updateByKey(int, string);
 };
 
