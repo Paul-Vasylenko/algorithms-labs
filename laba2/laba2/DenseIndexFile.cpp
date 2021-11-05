@@ -40,7 +40,10 @@ string DenseIndexFile::updateByKey(int key, string newData)
 		if (key >= block->MIN_KEY_VALUE && key <= block->MAX_KEY_VALUE) {
 			IndexRecord* result = block->get(key);
 			if (result == nullptr) {
-				return "Not found";
+				result = this->indexSegment->overflowArea->get(key);
+				if(result==nullptr) return "Not found";
+				string res = this->dataSegment->updateByRowNumber(result->dataPointer, newData);
+				return res;
 			}
 			string res = this->dataSegment->updateByRowNumber(result->dataPointer, newData);
 			return res;

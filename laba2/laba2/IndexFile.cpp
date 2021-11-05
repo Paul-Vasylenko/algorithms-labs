@@ -97,7 +97,10 @@ void IndexFile::deleteByKey(int key)
 	for (auto block : blocks) {
 		if (key >= block->MIN_KEY_VALUE && key <= block->MAX_KEY_VALUE) {
 			block->deleteByKey(key);
+			this->overflowArea->deleteByKey(key);
 			this->writeFile();
+			this->writeFile();
+			return;
 		}
 	}
 }

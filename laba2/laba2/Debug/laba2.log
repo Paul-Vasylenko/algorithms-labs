@@ -1,5 +1,4 @@
-﻿  IndexFile.cpp
-X:\KPI\First_semestr\АСД\laba2\laba2\IndexFile.cpp(82,21): warning C4018: <: несоответствие типов со знаком и без знака
-X:\KPI\First_semestr\АСД\laba2\laba2\IndexFile.cpp(88,20): warning C4018: <: несоответствие типов со знаком и без знака
-X:\KPI\First_semestr\АСД\laba2\laba2\IndexFile.cpp(52): warning C4715: IndexFile::search: значение возвращается не при всех путях выполнения
+﻿  DenseIndexFile.cpp
+X:\KPI\First_semestr\АСД\laba2\laba2\DenseIndexFile.cpp(52): warning C4715: DenseIndexFile::updateByKey: значение возвращается не при всех путях выполнения
+X:\KPI\First_semestr\АСД\laba2\laba2\DenseIndexFile.cpp(29): warning C4715: DenseIndexFile::getData: значение возвращается не при всех путях выполнения
   laba2.vcxproj -> X:\KPI\First_semestr\АСД\laba2\laba2\Debug\laba2.exe
