@@ -56,7 +56,7 @@ int* AntColony::solve()
 		moveAnts();
 		updateTrails();
 		updateBestSolution();
-		if (i % 20 == 0) {
+		if (i % 10 == 0) {
 			cout << "Iteration: " << i << endl;
 			cout << "Length of the best path founded: " << bestTourLength << endl;
 			cout << "Order of best solution: ";
@@ -78,7 +78,10 @@ void AntColony::setStartTrails()
 	{
 		for (int j = 0; j < numberOfCities; j++)
 		{
-			trails[i][j] = 0.2; //start number of feromon
+			if (i == j) trails[i][j] = 0;
+			else {
+				trails[i][j] = 0.2; //start number of feromon
+			}
 		}
 	}
 }
@@ -103,31 +106,32 @@ void AntColony::moveAnts()
 {
 	for (int i=currentIndex; i < numberOfCities-1; i++, currentIndex++)
 	{
-		for (auto ant : ants) {
-			ant.visitCity(i, selectNextCity(ant));
+		for(auto ant: ants)
+		{
+				ant.visitCity(i, selectNextCity(ant));
 		}
 	}
 }
 
 int AntColony::selectNextCity(Ant ant) {
-	int t = rand()%(numberOfCities - currentIndex);
 	float random = static_cast <float>(rand()%1000)/static_cast<float>(1000);
 	if (random < randomFactor) {
 		for (int i = 0; i < numberOfCities; i++)
 		{
-			if (i == t && !ant.isVisited(i)) {
+			if (!ant.isVisited(i)) {
 				return i;
 			}
 		}
 	}
 	calculateProbabilities(ant);
-	double min = INT_MIN;
+	float counter = 0;
 	int index = 0;
 	for (int i = 0; i < numberOfCities; i++)
 	{
-		if (min < probabilities[i]) {
-			min = probabilities[i];
-			index = i;
+		counter += probabilities[i];
+		if (counter >= random) {
+			index= i;
+			break;
 		}
 	}
 	return index;
@@ -140,7 +144,6 @@ void AntColony::calculateProbabilities(Ant ant)
 	for (int j = 0; j < numberOfCities; j++)
 	{
 		if (!ant.isVisited(j)) {
-			//total
 			feromone += pow(trails[i][j], alpha) * pow(sightMatrix[i][j], beta);
 		}
 	}
@@ -165,7 +168,6 @@ void AntColony::updateTrails()
 			trails[i][j] *= (1 - evaporation); //feromon disappear
 		}
 	}
-	//?
 	for (auto ant : ants) {
 		float contribution = (Lmin / ant.trailLength(graph));
 		for (int i = 0; i < numberOfCities - 1; i++) {

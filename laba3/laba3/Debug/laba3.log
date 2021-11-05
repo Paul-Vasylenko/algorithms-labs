@@ -1,6 +1,12 @@
 ﻿  AntColony.cpp
 X:\KPI\First_semestr\АСД\laba3\laba3\AntColony.h(11,20): warning C4305: инициализация: усечение из "double" в "float"
 X:\KPI\First_semestr\АСД\laba3\laba3\AntColony.h(13,21): warning C4305: инициализация: усечение из "double" в "float"
-X:\KPI\First_semestr\АСД\laba3\laba3\AntColony.cpp(81,22): warning C4305: =: усечение из "double" в "float"
-X:\KPI\First_semestr\АСД\laba3\laba3\AntColony.cpp(170,22): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+X:\KPI\First_semestr\АСД\laba3\laba3\AntColony.cpp(83,23): warning C4305: =: усечение из "double" в "float"
+X:\KPI\First_semestr\АСД\laba3\laba3\AntColony.cpp(131,30): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+X:\KPI\First_semestr\АСД\laba3\laba3\AntColony.cpp(172,22): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+  laba3.cpp
+X:\KPI\First_semestr\АСД\laba3\laba3\AntColony.h(11,20): warning C4305: инициализация: усечение из "double" в "float"
+X:\KPI\First_semestr\АСД\laba3\laba3\AntColony.h(13,21): warning C4305: инициализация: усечение из "double" в "float"
+X:\KPI\First_semestr\АСД\laba3\laba3\laba3.cpp(11,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
   laba3.vcxproj -> X:\KPI\First_semestr\АСД\laba3\laba3\Debug\laba3.exe

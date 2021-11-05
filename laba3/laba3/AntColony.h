@@ -15,7 +15,7 @@ class AntColony
 	int maxIterations = 1000;
 
 	int numberOfCities;
-	double Lmin=700; //calc
+	double Lmin=170; //calc
 	float** graph;
 	float** sightMatrix;
 	float** trails;

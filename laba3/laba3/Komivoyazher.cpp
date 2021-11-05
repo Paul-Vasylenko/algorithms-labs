@@ -24,7 +24,7 @@ Komivoyazher::Komivoyazher(int numOfCities)
 			if (i == j) distanceMatrix[i][j] = 0;
 			else if (distanceMatrix[i][j] != 0) continue;
 			else {
-				int num = rand()%46 + 5;
+				int num = rand()%40 + 5;
 				distanceMatrix[i][j] = distanceMatrix[j][i] = num;
 			}
 		}

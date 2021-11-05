@@ -3,7 +3,6 @@
 #include <string>
 #include "Komivoyazher.h"
 #include "AntColony.h"
-#define SIZE 10
 using namespace std;
 
 
