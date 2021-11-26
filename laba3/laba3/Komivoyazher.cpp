@@ -17,7 +17,7 @@ Komivoyazher::Komivoyazher(int numOfCities)
 		}
 	}
 
-	for (int i = 0; i < numOfCities; i++)
+	/*for (int i = 0; i < numOfCities; i++)
 	{
 		for (int j = 0; j < numOfCities; j++)
 		{
@@ -28,9 +28,9 @@ Komivoyazher::Komivoyazher(int numOfCities)
 				distanceMatrix[i][j] = distanceMatrix[j][i] = num;
 			}
 		}
-	}
+	}*/
 	//READ FROM FILE
-	/*ifstream file;
+	ifstream file;
 	file.open("data.txt");
 
 	for (int i = 0; i < numOfCities; i++)
@@ -44,7 +44,7 @@ Komivoyazher::Komivoyazher(int numOfCities)
 			distanceMatrix[i][j] = value;
 		}
 	}
-	file.close();*/
+	file.close();
 }
 
 void Komivoyazher::displayDistanceMatrix()
@@ -53,7 +53,7 @@ void Komivoyazher::displayDistanceMatrix()
 	{
 		for (int j = 0; j < numberOfCities; j++)
 		{
-			cout << distanceMatrix[i][j] << '\t';
+			cout << distanceMatrix[i][j] << ' ';
 		}
 		cout << endl;
 	}

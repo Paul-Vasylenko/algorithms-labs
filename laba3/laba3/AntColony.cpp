@@ -28,14 +28,13 @@ AntColony::AntColony(float** generatedMatrix, int size)
 	{
 		bestTourOrder[i] = 0;
 	}
-	//LMin
 	for (int i = 0; i < numberOfAnts; i++)
 	{
 		ants.push_back(Ant(numberOfCities));
 	}
 }
 
-void AntColony::putAntsOnPositions()
+void AntColony::setAnts()
 {
 	for (int i = 0; i < numberOfAnts; i++)
 	{
@@ -48,28 +47,28 @@ void AntColony::putAntsOnPositions()
 
 int* AntColony::solve()
 {
+	getLMin();
 	setStartTrails();
 	setSightMatrix();
 	for (int i = 0; i < maxIterations; i++)
 	{
-		putAntsOnPositions();
+		setAnts();
 		moveAnts();
 		updateTrails();
 		updateBestSolution();
-		if (i % 10 == 0) {
+		if (i % 20 == 0) {
 			cout << "Iteration: " << i << endl;
 			cout << "Length of the best path founded: " << bestTourLength << endl;
 			cout << "Order of best solution: ";
-			for (int i = 0; i < numberOfCities; i++)
+			/*for (int i = 0; i < numberOfCities; i++)
 			{
 				cout << bestTourOrder[i] << "-->";
-			}
+			}*/
+			cout << endl;
 		}
 	}
-	
-	
+	cout <<"LMin " << Lmin << endl;
 	return bestTourOrder;
-
 }
 
 void AntColony::setStartTrails()
@@ -108,12 +107,12 @@ void AntColony::moveAnts()
 	{
 		for(auto ant: ants)
 		{
-				ant.visitCity(i, selectNextCity(ant));
+				ant.visitCity(i, selectCity(ant));
 		}
 	}
 }
 
-int AntColony::selectNextCity(Ant ant) {
+int AntColony::selectCity(Ant ant) {
 	float random = static_cast <float>(rand()%1000)/static_cast<float>(1000);
 	if (random < randomFactor) {
 		for (int i = 0; i < numberOfCities; i++)
@@ -191,3 +190,43 @@ void AntColony::updateBestSolution()
 	}
 }
 
+void AntColony::getLMin()
+{
+	int Lmin = 0;
+	vector<int> checked;
+	int i = 0;
+	while (checked.size() < numberOfCities)
+	{
+		if (checked.size() + 1 == numberOfCities)
+		{
+			Lmin += graph[i][0];
+			break;
+		}
+		int min = 51;
+		int count = 0;
+		checked.push_back(i);
+		for (int j = 0; j < numberOfCities; j++)
+		{
+			if (min > graph[i][j] && CheckInChecked(j, checked))
+			{
+				min = graph[i][j];
+				count = j;
+			}
+		}
+		i = count;
+		Lmin += min;
+	}
+	this->Lmin = Lmin;
+}
+
+bool AntColony::CheckInChecked(int a, vector<int> checked)
+{
+	for (int n = 0; n < checked.size(); n++)
+	{
+		if (a == checked[n])
+		{
+			return false;
+		}
+	}
+	return true;
+}

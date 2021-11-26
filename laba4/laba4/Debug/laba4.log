@@ -1,0 +1,8 @@
+﻿  BeeColonyAlgorithm.cpp
+X:\KPI\First_semestr\АСД\laba4\laba4\BeeColonyAlgorithm.cpp(59,21): warning C4018: <: несоответствие типов со знаком и без знака
+X:\KPI\First_semestr\АСД\laba4\laba4\BeeColonyAlgorithm.cpp(63,21): warning C4018: <: несоответствие типов со знаком и без знака
+X:\KPI\First_semestr\АСД\laba4\laba4\BeeColonyAlgorithm.cpp(80,20): warning C4018: <: несоответствие типов со знаком и без знака
+  laba4.cpp
+X:\KPI\First_semestr\АСД\laba4\laba4\laba4.cpp(12,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
+  laba4.vcxproj -> X:\KPI\First_semestr\АСД\laba4\laba4\Debug\laba4.exe

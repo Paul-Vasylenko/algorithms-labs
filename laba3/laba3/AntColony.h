@@ -15,7 +15,7 @@ class AntColony
 	int maxIterations = 1000;
 
 	int numberOfCities;
-	double Lmin=170; //calc
+	double Lmin = 0;
 	float** graph;
 	float** sightMatrix;
 	float** trails;
@@ -26,13 +26,15 @@ class AntColony
 
 	int* bestTourOrder;
 	float bestTourLength;
-
-	void putAntsOnPositions();
+	
+	void getLMin();
+	bool CheckInChecked(int a, vector<int> checked);
+	void setAnts();
 	void setStartTrails();
 	void setSightMatrix();
 	void moveAnts();
 	void calculateProbabilities(Ant ant);
-	int selectNextCity(Ant ant);
+	int selectCity(Ant ant);
 	void updateTrails();
 	void updateBestSolution();
 public:
