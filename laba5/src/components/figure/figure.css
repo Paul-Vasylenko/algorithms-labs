@@ -1,0 +1,18 @@
+.figure {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+}
+
+.white {
+  background-color: white;
+}
+
+.black {
+  background-color: black;
+  cursor: pointer;
+}
+
+.chosen {
+  background-color: #222;
+}
