@@ -18,6 +18,7 @@ interface GameProps {
 const Game: React.FC<GameProps> = ({ board }) => {
   const { chosenFigure, possibleMoves } = useAppSelector((store) => store.move);
   const { yourTurn } = useAppSelector((store) => store.turn);
+  const gameState = useAppSelector((store) => store.game.state);
   const dispatch = useAppDispatch();
   const checkPossibleMove = React.useCallback(
     (row: number, col: number) => {
@@ -74,7 +75,7 @@ const Game: React.FC<GameProps> = ({ board }) => {
   }, [yourTurn]);
 
   const playerTurn = (i: number, j: number) => {
-    if (yourTurn) {
+    if (yourTurn && gameState === "going") {
       if (checkPossibleMove(i, j)) {
         if (chosenFigure) {
           dispatch(
@@ -136,7 +137,9 @@ const Game: React.FC<GameProps> = ({ board }) => {
                       chosen={i === chosenFigure?.row && j === chosenFigure.col}
                       onFigureClick={(e) => {
                         e.stopPropagation();
-                        onFigureBlackClick(i, j);
+                        if (gameState === "going") {
+                          onFigureBlackClick(i, j);
+                        }
                       }}
                     />
                   ) : null}

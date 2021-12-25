@@ -26,7 +26,7 @@ class Game {
               const { row: moveRow, col } = possibleMove;
               boardCopy[moveRow][col] = 1;
               boardCopy[i][j] = 0;
-              const score = this.minimax(boardCopy, 0, this.USER_TURN);
+              const score = this.minimax(boardCopy, 0, -20, 20, this.USER_TURN);
               if (
                 score === 1 &&
                 GameHelper.checkForWin(boardCopy, SCORE.AI_WIN)
@@ -50,14 +50,20 @@ class Game {
     return result;
   }
 
-  minimax = (board: number[][], depth: number, isAiTurn: boolean): number => {
+  minimax = (
+    board: number[][],
+    depth: number,
+    alpha: number,
+    beta: number,
+    isAiTurn: boolean
+  ): number => {
     if (GameHelper.checkForWin(board, SCORE.USER_WIN)) {
       return SCORE.USER_WIN;
     } else if (GameHelper.checkForWin(board, SCORE.AI_WIN)) {
       return SCORE.AI_WIN;
     } else if (GameHelper.checkForDraw()) {
       return SCORE.DRAW;
-    } else if (depth === 5) {
+    } else if (depth === 4) {
       return GameHelper.estimateNow(board);
     }
     let bestScore = isAiTurn ? -20 : 20;
@@ -71,15 +77,23 @@ class Game {
               j,
               board
             );
-            possibleMoves.forEach((possibleMove) => {
+            for (let possibleMove of possibleMoves) {
               const { row: moveRow, col } = possibleMove;
               board[moveRow][col] = 1;
               board[i][j] = 0;
-              const score = this.minimax(board, depth + 1, this.USER_TURN);
+              const score = this.minimax(
+                board,
+                depth + 1,
+                alpha,
+                beta,
+                this.USER_TURN
+              );
               board[moveRow][col] = 0;
               board[i][j] = 1;
               bestScore = Math.max(score, bestScore);
-            });
+              alpha = Math.max(alpha, score);
+              if (beta <= alpha) break;
+            }
           }
         });
       });
@@ -93,15 +107,25 @@ class Game {
               j,
               board
             );
-            possibleMoves.forEach((possibleMove) => {
+            for (let possibleMove of possibleMoves) {
               const { row: moveRow, col } = possibleMove;
               board[moveRow][col] = -1;
               board[i][j] = 0;
-              const score = this.minimax(board, depth + 1, this.AI_TURN);
+              const score = this.minimax(
+                board,
+                depth + 1,
+                alpha,
+                beta,
+                this.AI_TURN
+              );
               board[moveRow][col] = 0;
               board[i][j] = -1;
               bestScore = Math.min(score, bestScore);
-            });
+              beta = Math.min(beta, score);
+              if (beta <= alpha) {
+                break;
+              }
+            }
           }
         });
       });

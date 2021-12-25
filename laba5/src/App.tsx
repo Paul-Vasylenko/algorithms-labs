@@ -8,6 +8,17 @@ function App() {
   const gameState = useAppSelector((store) => store.game.state);
   return (
     <>
+      <button
+        onClick={() =>
+          alert(`The players have three pieces each. They are placed as shown in the figure.
+    Movement: A piece slides orthogonally or diagonally until stopped by
+    an occupied square or the border of the board. Black always moves first.
+    
+    Objective: To get three in a row, orthogonally or diagonally. The row must be connected.`)
+        }
+      >
+        Rules
+      </button>
       <div className="app">
         <h1>Neutreeko</h1>
         {gameState === "going" ? <p>The game is hard..</p> : null}
