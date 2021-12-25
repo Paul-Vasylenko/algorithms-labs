@@ -1,0 +1,30 @@
+.green {
+  background-color: green;
+  border: 1px solid #ccc;
+}
+
+.red {
+  background-color: red;
+  border: 1px solid #ccc;
+}
+
+.yellow {
+  background-color: yellow;
+  border: 1px solid #ccc;
+}
+
+.blue {
+  background-color: blue;
+  border: 1px solid #ccc;
+}
+
+.white {
+  background-color: white;
+  border: 1px solid #444;
+}
+
+.black {
+  border: 1px solid #ccc;
+
+  background-color: #222;
+}
